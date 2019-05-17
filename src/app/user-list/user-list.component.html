@@ -1,1 +1,7 @@
-<p (click)="onUserClick(user)" *ngFor="let user of users$ | async">{{user.name}}</p>
+<p 
+    (click)="onUserClick(user)" 
+    *ngFor="let user of users$ | async"
+    [class.selected]="isSelected(user)"
+    >
+    {{user.name}}
+</p>

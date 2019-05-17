@@ -58,7 +58,11 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
         })
       )
       .toPromise()
-      .then(id => id === null ? this._router.navigate(['/404']) : this._router.navigate(['/users', id]));
+      .then(
+        id => id === null
+          ? this._router.navigate(['/404'])
+          : this._router.navigate([`../${id}`], {relativeTo: this._activateRoute})
+      );
   }
 
   public onNext(): void {
@@ -67,5 +71,17 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
 
   public onPrev(): void {
     this._changeHandler('prev');
+  }
+
+  public onBack(): void {
+    this._router.navigate(['../', { id: this._currentUserId }], {relativeTo: this._activateRoute});
+  }
+
+  public onContactInfo(): void {
+    this._router.navigate(['./contact-info'], {relativeTo: this._activateRoute});
+  }
+
+  public onOverview(): void {
+    this._router.navigate(['./overview'], {relativeTo: this._activateRoute});
   }
 }

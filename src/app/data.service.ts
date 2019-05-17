@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, throwError, zip } from 'rxjs';
+import { Observable, throwError, zip, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
 export interface IUser {
@@ -21,7 +21,24 @@ export class DataService {
   ) { }
 
   public getUsers(): Observable<IUser[]> {
-    const users$ = this._httpClient.get<IUser[]>(this._USERS_URL);
+    // const users$ = this._httpClient.get<IUser[]>(this._USERS_URL);
+    const users$ = of([
+      {
+        id: 0,
+        name: 'user0',
+        info: 'info0'
+      },
+      {
+        id: 1,
+        name: 'user1',
+        info: 'info1'
+      },
+      {
+        id: 2,
+        name: 'user2',
+        info: 'info2'
+      },
+    ])
     return users$;
   }
 

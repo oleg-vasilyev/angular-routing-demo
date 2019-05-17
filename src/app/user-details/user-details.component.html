@@ -1,6 +1,14 @@
 <p>{{(user$ | async)?.info}}</p>
-<p>
-  <button (click)="onPrev()">Prev</button>
 
-  <button (click)="onNext()">Next</button>
+<p>
+  <button (click)="onContactInfo()">Contact info</button>
+  <button (click)="onOverview()">Overview</button>
 </p>
+
+<router-outlet></router-outlet>
+
+<button (click)="onPrev()">Prev</button>
+
+<button (click)="onNext()">Next</button>
+
+<button (click)="onBack()">Back</button>
